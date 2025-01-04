@@ -89,7 +89,7 @@ async def run_attack(target_ip, target_port, duration):
     global attack_in_progress
     attack_in_progress = True
     try:
-        process = await asyncio.create_subprocess_shell(f"./pandey {target_ip} {target_port} {duration}")
+        process = await asyncio.create_subprocess_shell(f"./soul {target_ip} {target_port} {duration}")
         await process.communicate()
         bot.send_message(ADMIN_USER_ID, f"🛑 𝘼𝙏𝙏𝘼𝘾𝙆 𝙎𝙏𝙊𝙋 🛑\n\n𝐇𝐎𝐒𝐓-> {target_ip}\n𝐏𝐎𝐑𝐓-> {target_port}\n𝐓𝐈𝐌𝐄-> {duration}")
     except Exception as e:
